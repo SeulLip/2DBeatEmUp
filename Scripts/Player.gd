@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+
 var isAttacking = false;
 var ComboPoints = 2;
 
@@ -28,7 +29,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-			if isAttacking == false: 
+			if not isAttacking: 
 				$Weapon/AnimationPlayer.play("Idle");
 	else:
 		velocity = Vector2.ZERO
@@ -46,7 +47,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName):
-	if anim_name == "ComboA1" or "ComboA2": 
+	if anim_name == "ComboA1" or anim_name == "ComboA2": 
 		isAttacking = false;
 
 
