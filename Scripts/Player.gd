@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var isDashing =  false
 
 var isAttacking = false;
 var ComboPoints = 2;
@@ -29,10 +30,15 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-			if not isAttacking: 
+		if Input.is_action_just_pressed("dash"): isDashing = true
+		if isDashing:
+			velocity.x += SPEED * 12 * direction
+			isDashing = false
+		if not isAttacking: 
 				$Weapon/AnimationPlayer.play("Idle");
 	else:
 		velocity = Vector2.ZERO
+	
 	if Input.is_action_just_pressed("attack") and ComboPoints == 2:
 		$ComboAResetTimer.start();
 		$Weapon/AnimationPlayer.play("ComboA1");
