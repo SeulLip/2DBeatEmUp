@@ -19,6 +19,15 @@ func add_knockback(player: CharacterBody2D):
 	knockback_velocity *= sign( $"..".global_position.x - player.global_position.x)
 	linear_velocity.x += knockback_velocity
 	
+func add_knockup(player: CharacterBody2D):
+	var knockback_velocity = 200
+	knockback_velocity *= sign( $"..".global_position.x - player.global_position.x)
+	linear_velocity.y += knockback_velocity
+	
 func knockback_animation():
 	animation.play("Hit");
 	HitStopManager.hit_stop_light() 
+	
+func knockup_animation():
+	animation.play("Hit");
+	HitStopManager.hit_stop_medium() 
