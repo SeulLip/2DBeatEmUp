@@ -1,12 +1,15 @@
 extends RigidBody2D
 @export var animation: AnimationPlayer
+
 func _ready() -> void:
 	animation.play("Idle");
 
 func _on_enemy_hurtbox_on_hit(player: CharacterBody2D) -> void:
-	add_knockback(player)
-	knockback_animation()
+	#add_knockback(player)
+	#knockback_animation()
 	
+	add_knockup(player)
+	knockup_animation()
 
 func _on_animation_enemy_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Hit":
@@ -20,9 +23,9 @@ func add_knockback(player: CharacterBody2D):
 	linear_velocity.x += knockback_velocity
 	
 func add_knockup(player: CharacterBody2D):
-	var knockback_velocity = 200
-	knockback_velocity *= sign( $"..".global_position.x - player.global_position.x)
-	linear_velocity.y += knockback_velocity
+	var knockup_velocity = 1200
+	knockup_velocity *= sign( $"..".global_position.y - player.global_position.x)
+	linear_velocity.y += knockup_velocity
 	
 func knockback_animation():
 	animation.play("Hit");

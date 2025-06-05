@@ -456,7 +456,7 @@ debug_color = Color(0.892607, 0.253495, 0.511318, 0.42)
 [node name="KnockUpHitbox" type="Area2D" parent="Player" node_paths=PackedStringArray("player") groups=["Sword"]]
 position = Vector2(-6, -49)
 scale = Vector2(0.268328, 0.0332031)
-collision_layer = 4
+collision_layer = 2
 collision_mask = 0
 script = ExtResource("5_5ncpa")
 player = NodePath("..")
