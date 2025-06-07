@@ -1,11 +1,12 @@
 extends Area2D
 
-signal on_hit(player: CharacterBody2D)
+signal on_hit(player: CharacterBody2D, attackdata: AttackData)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Sword"):
-		var player = area.get_node(".").player
-		on_hit.emit(player)
+		var player = area.get_node("FindPlayer").player
+		var attackdata = area.get_node(".").attack
+		on_hit.emit(player, attackdata)
 	if area.is_in_group("ComboA"):
 		print("bruh")
 	if area.is_in_group("KnockUp"):

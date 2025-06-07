@@ -1,13 +1,18 @@
-[gd_scene load_steps=25 format=3 uid="uid://mttvbfkx7je5"]
+[gd_scene load_steps=32 format=3 uid="uid://mttvbfkx7je5"]
 
 [ext_resource type="Texture2D" uid="uid://dd05ee4rxjgwb" path="res://Assets/icon.svg" id="1_kne1u"]
 [ext_resource type="Texture2D" uid="uid://b72wnlhi2blg8" path="res://Assets/GjxgeNzW0AA9OXp.png" id="2_e80uo"]
 [ext_resource type="Script" uid="uid://dxrhc7edudyod" path="res://Scripts/Player.gd" id="2_tdg3f"]
 [ext_resource type="Texture2D" uid="uid://byrq5yyk083ua" path="res://Assets/Dead.png" id="3_cxr5p"]
+[ext_resource type="Script" uid="uid://c5cdmqrqr7ph4" path="res://Scripts/AttackData.gd" id="3_hp6x6"]
+[ext_resource type="Script" uid="uid://b1ymuc6qmxjp2" path="res://Scripts/ComboData.gd" id="3_l6ohk"]
+[ext_resource type="Resource" uid="uid://dpdbk22dy80tb" path="res://Assets/PlayerMoveset/Combos/KnockUp.tres" id="4_oudfo"]
 [ext_resource type="Script" uid="uid://r1r865h74nqk" path="res://Scripts/FindPlayer.gd" id="5_5ncpa"]
 [ext_resource type="Texture2D" uid="uid://cet50axnstwpk" path="res://Assets/6ecb0103c1e00cdb6eaf49272cadb378.jpg" id="5_cxr5p"]
 [ext_resource type="Script" uid="uid://jaxgqhstkqls" path="res://Enemy.gd" id="5_dtqjt"]
+[ext_resource type="Resource" uid="uid://cfyg63mricqon" path="res://Assets/PlayerMoveset/Combos/ComboA.tres" id="5_oudfo"]
 [ext_resource type="Script" uid="uid://o4prts8kb3pj" path="res://Scripts/EnemyHurtbox.gd" id="5_tdg3f"]
+[ext_resource type="Script" uid="uid://dddny7qhs3qjn" path="res://Scripts/PlayerHitbox.gd" id="8_l6ohk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0tk4"]
 
@@ -266,8 +271,27 @@ _data = {
 &"RESET": SubResource("Animation_i5arm")
 }
 
+[sub_resource type="Resource" id="Resource_wi0c6"]
+script = ExtResource("3_hp6x6")
+damage = 0.0
+animation = &""
+knockup = 0.0
+knockback = 0.0
+link_time = 0.0
+metadata/_custom_type_script = "uid://c5cdmqrqr7ph4"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kne1u"]
 size = Vector2(13.7268, 32.1255)
+
+[sub_resource type="Resource" id="Resource_r3kul"]
+resource_name = "KnockUpAttack"
+script = ExtResource("3_hp6x6")
+damage = 0.0
+animation = &""
+knockup = 600.0
+knockback = 200.0
+link_time = 0.0
+metadata/_custom_type_script = "uid://c5cdmqrqr7ph4"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtqjt"]
 friction = 0.4
@@ -413,6 +437,7 @@ script = ExtResource("2_tdg3f")
 jump_height = 200.0
 jump_time_to_peak = 0.5
 jump_time_to_decent = 0.2
+combos = Array[ExtResource("3_l6ohk")]([ExtResource("4_oudfo"), ExtResource("5_oudfo")])
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.1, 0.1)
@@ -438,13 +463,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_wc5p8")
 }
 
-[node name="ComboAHitbox" type="Area2D" parent="Player" node_paths=PackedStringArray("player") groups=["Sword"]]
+[node name="ComboAHitbox" type="Area2D" parent="Player" groups=["Sword"]]
 position = Vector2(-6, -49)
 scale = Vector2(0.268328, 0.0332031)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("5_5ncpa")
-player = NodePath("..")
+script = ExtResource("8_l6ohk")
+attack = SubResource("Resource_wi0c6")
 
 [node name="ComboA" type="CollisionShape2D" parent="Player/ComboAHitbox" groups=["ComboA"]]
 position = Vector2(617.717, 1445.65)
@@ -453,13 +478,17 @@ shape = SubResource("RectangleShape2D_kne1u")
 disabled = true
 debug_color = Color(0.892607, 0.253495, 0.511318, 0.42)
 
-[node name="KnockUpHitbox" type="Area2D" parent="Player" node_paths=PackedStringArray("player") groups=["Sword"]]
+[node name="FindPlayer" type="Node2D" parent="Player/ComboAHitbox" node_paths=PackedStringArray("player")]
+script = ExtResource("5_5ncpa")
+player = NodePath("../..")
+
+[node name="KnockUpHitbox" type="Area2D" parent="Player" groups=["Sword"]]
 position = Vector2(-6, -49)
 scale = Vector2(0.268328, 0.0332031)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("5_5ncpa")
-player = NodePath("..")
+script = ExtResource("8_l6ohk")
+attack = SubResource("Resource_r3kul")
 
 [node name="KnockUp" type="CollisionShape2D" parent="Player/KnockUpHitbox" groups=["KnockUp"]]
 position = Vector2(617.717, 1445.65)
@@ -467,6 +496,10 @@ scale = Vector2(30, 30)
 shape = SubResource("RectangleShape2D_kne1u")
 disabled = true
 debug_color = Color(0.892607, 0.253495, 0.511318, 0.42)
+
+[node name="FindPlayer" type="Node2D" parent="Player/KnockUpHitbox" node_paths=PackedStringArray("player")]
+script = ExtResource("5_5ncpa")
+player = NodePath("../..")
 
 [node name="ComboAResetTimer" type="Timer" parent="Player"]
 wait_time = 0.3

@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -400.0
 @export var jump_height : float
 @export var jump_time_to_peak : float
 @export var jump_time_to_decent : float
-
+@export var combos : Array[ComboData]
 @onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_decent * jump_time_to_decent)) * -1.0
@@ -17,6 +17,8 @@ var last_right_tap_time = 0
 var isDashing =  false
 
 var isAttacking = false;
+var last_attack_name = null
+var last_attack_count: int = 0
 var ComboPoints = 2;
 
 func _physics_process(delta):
@@ -64,6 +66,19 @@ func _physics_process(delta):
 				$Weapon/AnimationPlayer.play("Idle");
 	else:
 		velocity = Vector2.ZERO
+		
+	for combo in combos: 
+		if Input.is_action_just_pressed(combo.input):
+			if combo.resource_name == last_attack_name:
+				last_attack_count += 1
+				if last_attack_count >= combo.attacks.size():
+					last_attack_count = 0
+			else: 
+				last_attack_count = 0
+			last_attack_name = combo.resource_name
+			$Weapon/AnimationPlayer.play(combo.attacks[last_attack_count].animation);
+			isAttacking = true
+			
 	if Input.is_action_just_pressed("down"):
 		$Weapon/AnimationPlayer.play("KnockUp");
 		isAttacking = true
