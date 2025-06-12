@@ -13,11 +13,17 @@ config_version=5
 config/name="2D GG or something lol"
 run/main_scene="res://Player.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/image="uid://byrq5yyk083ua"
 config/icon="res://Assets/icon.svg"
 
 [autoload]
 
 HitStopManager="*res://Scripts/HitStopManager.gd"
+InputBuffer="*res://Scripts/input_buffer.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [global_group]
 

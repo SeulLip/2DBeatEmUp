@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://mttvbfkx7je5"]
+[gd_scene load_steps=32 format=3 uid="uid://mttvbfkx7je5"]
 
 [ext_resource type="Texture2D" uid="uid://dd05ee4rxjgwb" path="res://Assets/icon.svg" id="1_kne1u"]
 [ext_resource type="Texture2D" uid="uid://b72wnlhi2blg8" path="res://Assets/GjxgeNzW0AA9OXp.png" id="2_e80uo"]
@@ -13,7 +13,6 @@
 [ext_resource type="Resource" uid="uid://cfyg63mricqon" path="res://Assets/PlayerMoveset/Combos/ComboA.tres" id="5_oudfo"]
 [ext_resource type="Script" uid="uid://o4prts8kb3pj" path="res://Scripts/EnemyHurtbox.gd" id="5_tdg3f"]
 [ext_resource type="Script" uid="uid://dddny7qhs3qjn" path="res://Scripts/PlayerHitbox.gd" id="8_l6ohk"]
-[ext_resource type="PackedScene" uid="uid://dikbmfuddjiuf" path="res://Assets/InputSystem/buffer.tscn" id="14_d6rpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0tk4"]
 
@@ -540,8 +539,6 @@ libraries = {
 position = Vector2(0, 1.37091e-05)
 scale = Vector2(13.3, 13.95)
 shape = SubResource("RectangleShape2D_dtqjt")
-
-[node name="Buffer" parent="." instance=ExtResource("14_d6rpx")]
 
 [connection signal="animation_finished" from="Player/Weapon/AnimationPlayer" to="Player" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Player/ComboAResetTimer" to="Player" method="_on_combo_a_reset_timer_timeout"]

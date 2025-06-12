@@ -32,7 +32,7 @@ func _physics_process(delta):
 	if not isAttacking:
 		
 	# Handle jump.
-		if Input.is_action_just_pressed("jump") and is_on_floor():
+		if Input.is_action_just_pressed("up") and is_on_floor():
 			velocity.y = jump_velocity
 
 		var direction := Input.get_axis("left", "right") 
