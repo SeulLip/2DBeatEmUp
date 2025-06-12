@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+var current_input_sequence : Array[StringName] = []
+var last_input_time : float = 0
+var current_input_combo : StringName = ""
 
 const SPEED = 300.0
 const dash_tap_interval = 0.25
@@ -20,6 +23,7 @@ var isAttacking = false;
 var last_attack_name = null
 var last_attack_count: int = 0
 var ComboPoints = 2;
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -66,32 +70,103 @@ func _physics_process(delta):
 				$Weapon/AnimationPlayer.play("Idle");
 	else:
 		velocity = Vector2.ZERO
+	if last_input_time + 0.5 < Time.get_ticks_msec() / 1000.0:
+		current_input_combo = ""
+		current_input_sequence = []
+	var input_changed = false
+	if current_input_combo == "":
 		
-	for combo in combos: 
-		if Input.is_action_just_pressed(combo.input):
-			if combo.resource_name == last_attack_name:
-				last_attack_count += 1
-				if last_attack_count >= combo.attacks.size():
-					last_attack_count = 0
-			else: 
-				last_attack_count = 0
-			last_attack_name = combo.resource_name
-			$Weapon/AnimationPlayer.play(combo.attacks[last_attack_count].animation);
-			isAttacking = true
-			
-	if Input.is_action_just_pressed("down"):
-		$Weapon/AnimationPlayer.play("KnockUp");
-		isAttacking = true
-	if Input.is_action_just_pressed("attack") and ComboPoints == 2:
-		$ComboAResetTimer.start();
-		$Weapon/AnimationPlayer.play("ComboA1");
-		ComboPoints = ComboPoints -1;
-		isAttacking = true;  
-	elif Input.is_action_just_pressed("attack") and ComboPoints == 1:
-		$ComboAResetTimer.start();
-		$Weapon/AnimationPlayer.play("ComboA2");
-		ComboPoints = ComboPoints -1;
-		isAttacking = true;  
+		if Input.is_action_just_pressed("down"):
+			current_input_combo = ("down")
+			input_changed = true
+		elif Input.is_action_just_pressed("up"):
+			current_input_combo = ("up")
+			input_changed = true
+		elif Input.is_action_just_pressed("left"):
+			current_input_combo = ("left")
+			input_changed = true
+		elif Input.is_action_just_pressed("right"):
+			current_input_combo = ("right")
+			input_changed = true
+		elif Input.is_action_just_pressed("light attack"):
+			current_input_combo = ("light attack")
+			input_changed = true
+		elif Input.is_action_just_pressed("heavy attack"):
+			current_input_combo = ("heavy attack")
+			input_changed = true
+	else:
+		if Input.is_action_just_released(current_input_combo):
+			current_input_sequence.append(current_input_combo)
+			current_input_combo = ""
+			input_changed = true
+		else:
+			if Input.is_action_just_pressed("down"):
+				input_changed = true
+				match current_input_combo:
+					"left":
+						current_input_sequence.append("down-left")
+						current_input_combo = ""
+					"right":
+						current_input_sequence.append("down-right")
+						current_input_combo = ""
+					_:
+						current_input_sequence.append(current_input_combo)
+						current_input_combo = "down"
+			elif Input.is_action_just_pressed("up"):
+				input_changed = true
+				match current_input_combo:
+					"left":
+						current_input_sequence.append("up-left")
+						current_input_combo = ""
+					"right":
+						current_input_sequence.append("up-right")
+						current_input_combo = ""
+					_:
+						current_input_sequence.append(current_input_combo)
+						current_input_combo = "up"
+			elif Input.is_action_just_pressed("left"):
+				input_changed = true
+				match current_input_combo:
+					"down":
+						current_input_sequence.append("down-left")
+						current_input_combo = ""
+					"up":
+						current_input_sequence.append("up-left")
+						current_input_combo = ""
+					_:
+						current_input_sequence.append(current_input_combo)
+						current_input_combo = "up"
+			elif Input.is_action_just_pressed("right"):
+				input_changed = true
+				match current_input_combo:
+					"down":
+						current_input_sequence.append("down-right")
+						current_input_combo = ""
+					"up":
+						current_input_sequence.append("up-right")
+						current_input_combo = ""
+					_:
+						current_input_sequence.append(current_input_combo)
+						current_input_combo = "right"
+			elif Input.is_action_just_pressed("light attack"):
+				input_changed = true
+				current_input_sequence.append(current_input_combo)
+				current_input_combo = "light attack"
+			elif Input.is_action_just_pressed("heavy attack"):
+				input_changed = true
+				current_input_sequence.append(current_input_combo)
+				current_input_combo = "heavy attack"
+	if input_changed:
+		last_input_time = Time.get_ticks_msec() / 1000.0
+		for combo in combos: 
+			if current_input_sequence == combo.input:
+				$Weapon/AnimationPlayer.play(combo.attack.animation);
+				isAttacking = true
+				current_input_combo = ""
+				current_input_sequence = []
+	print("current_input_combo", current_input_combo) 
+	print("current_input_sequence", current_input_sequence)
+
 	move_and_slide()
 	
 func gets_gravity() -> float:
@@ -100,7 +175,3 @@ func gets_gravity() -> float:
 func _on_animation_player_animation_finished(anim_name: StringName):
 	if anim_name == "ComboA1" or anim_name == "ComboA2" or anim_name == "KnockUp": 
 		isAttacking = false;
-
-
-func _on_combo_a_reset_timer_timeout() -> void:
-	ComboPoints = 2;

@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="ComboData" load_steps=4 format=3 uid="uid://dpdbk22dy80tb"]
+[gd_resource type="Resource" script_class="ComboData" load_steps=3 format=3 uid="uid://dpdbk22dy80tb"]
 
-[ext_resource type="Script" uid="uid://c5cdmqrqr7ph4" path="res://Scripts/AttackData.gd" id="1_ny133"]
 [ext_resource type="Resource" uid="uid://b25j7a3ahmm7h" path="res://Assets/PlayerMoveset/Attacks/KnockUpAttack.tres" id="2_t566d"]
 [ext_resource type="Script" uid="uid://b1ymuc6qmxjp2" path="res://Scripts/ComboData.gd" id="2_vni8m"]
 
 [resource]
 resource_name = "KnockUp"
 script = ExtResource("2_vni8m")
-input = &"knockup"
-attacks = Array[ExtResource("1_ny133")]([ExtResource("2_t566d")])
+input = Array[StringName]([&"down", &"down-right", &"right", &"heavy attack"])
+attack = ExtResource("2_t566d")
 metadata/_custom_type_script = "uid://b1ymuc6qmxjp2"

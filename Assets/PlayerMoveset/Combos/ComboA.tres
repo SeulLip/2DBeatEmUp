@@ -1,31 +1,11 @@
-[gd_resource type="Resource" script_class="ComboData" load_steps=5 format=3 uid="uid://cfyg63mricqon"]
+[gd_resource type="Resource" script_class="ComboData" load_steps=3 format=3 uid="uid://cfyg63mricqon"]
 
-[ext_resource type="Script" uid="uid://c5cdmqrqr7ph4" path="res://Scripts/AttackData.gd" id="1_rsvfp"]
+[ext_resource type="Resource" uid="uid://c4i7v1ldrh4n" path="res://Assets/PlayerMoveset/Attacks/ComboA.tres" id="1_rsvfp"]
 [ext_resource type="Script" uid="uid://b1ymuc6qmxjp2" path="res://Scripts/ComboData.gd" id="2_tiadb"]
-
-[sub_resource type="Resource" id="Resource_l6ohk"]
-resource_name = "ComboA1"
-script = ExtResource("1_rsvfp")
-damage = 0.0
-animation = &"ComboA1"
-knockup = 0.0
-knockback = 200.0
-link_time = 0.3
-metadata/_custom_type_script = "uid://c5cdmqrqr7ph4"
-
-[sub_resource type="Resource" id="Resource_oudfo"]
-resource_name = "ComboA2"
-script = ExtResource("1_rsvfp")
-damage = 0.0
-animation = &"ComboA2"
-knockup = 0.0
-knockback = 600.0
-link_time = 0.3
-metadata/_custom_type_script = "uid://c5cdmqrqr7ph4"
 
 [resource]
 resource_name = "ComboA"
 script = ExtResource("2_tiadb")
-input = &"attack"
-attacks = Array[ExtResource("1_rsvfp")]([SubResource("Resource_l6ohk"), SubResource("Resource_oudfo")])
+input = Array[StringName]([&"light attack"])
+attack = ExtResource("1_rsvfp")
 metadata/_custom_type_script = "uid://b1ymuc6qmxjp2"
