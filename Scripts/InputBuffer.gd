@@ -13,18 +13,24 @@ func _input(event):
 
 func _physics_process(_delta):
 	timer += _delta
-	if timer > 1:
+	if timer > 0.5:
 		var event = buffer.pop_front()
-		print('execute event %s!'%event)
+		#$CanvasLayer/BufferLabel.text = str(buffer)
+		#print('execute event %s!'%event)
 		print_buffer(buffer)
 		timer = 0
 
-
-func print_buffer(b:Array):
+func print_buffer(b: Array):
 	var p := []
 	for event in b:
 		if event is InputEventKey:
-			p.push_back(event.keycode)
-		if event is InputEventJoypadButton:
-			p.push_back(event.button_index)
-	print(p)
+			var key_name := OS.get_keycode_string(event.keycode)
+			p.push_back(key_name)
+		elif event is InputEventJoypadButton:
+			var button_name := "Button " + str(event.button_index)
+			p.push_back(button_name)
+	
+	# Convert to string and update label
+	var buffer_text := "[" + ", ".join(p) + "]"
+	#print(buffer_text)
+	$CanvasLayer/BufferLabel.text = buffer_text

@@ -11,15 +11,21 @@ config_version=5
 [application]
 
 config/name="2D GG or something lol"
-run/main_scene="res://Player.tscn"
+run/main_scene="uid://cgf1e8crmbhpy"
 config/features=PackedStringArray("4.4", "Forward Plus")
-boot_splash/image="uid://byrq5yyk083ua"
-config/icon="res://Assets/icon.svg"
+boot_splash/image="uid://cxqtldwkrhvas"
+config/icon="uid://cxqtldwkrhvas"
 
 [autoload]
 
 HitStopManager="*res://Scripts/HitStopManager.gd"
 InputBuffer="*res://Scripts/input_buffer.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 
 [editor_plugins]
 
