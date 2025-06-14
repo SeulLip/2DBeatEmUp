@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://mttvbfkx7je5"]
+[gd_scene load_steps=33 format=3 uid="uid://mttvbfkx7je5"]
 
 [ext_resource type="Texture2D" uid="uid://dd05ee4rxjgwb" path="res://Assets/icon.svg" id="1_kne1u"]
 [ext_resource type="Texture2D" uid="uid://b72wnlhi2blg8" path="res://Assets/GjxgeNzW0AA9OXp.png" id="2_e80uo"]
@@ -14,8 +14,6 @@
 [ext_resource type="Script" uid="uid://o4prts8kb3pj" path="res://Scripts/EnemyHurtbox.gd" id="5_tdg3f"]
 [ext_resource type="Script" uid="uid://dddny7qhs3qjn" path="res://Scripts/PlayerHitbox.gd" id="8_l6ohk"]
 [ext_resource type="PackedScene" uid="uid://cgf1e8crmbhpy" path="res://Input Display.tscn" id="14_d6rpx"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0tk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jka67"]
 
@@ -294,23 +292,6 @@ knockback = 200.0
 link_time = 0.0
 metadata/_custom_type_script = "uid://c5cdmqrqr7ph4"
 
-[sub_resource type="FontFile" id="FontFile_d6rpx"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/12/0/ascent = 0.0
-cache/0/12/0/descent = 0.0
-cache/0/12/0/underline_position = 0.0
-cache/0/12/0/underline_thickness = 0.0
-cache/0/12/0/scale = 1.0
-cache/0/48/0/ascent = 0.0
-cache/0/48/0/descent = 0.0
-cache/0/48/0/underline_position = 0.0
-cache/0/48/0/underline_thickness = 0.0
-cache/0/48/0/scale = 1.0
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtqjt"]
 friction = 0.4
 
@@ -426,64 +407,44 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtqjt"]
 size = Vector2(20, 21.4286)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0tk4"]
+
 [node name="Node3D" type="Node3D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, 118.86)
-scale = Vector2(10, 1)
+[node name="Node" parent="." instance=ExtResource("14_d6rpx")]
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_kne1u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_a0tk4")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(656, -656)
-scale = Vector2(1, 12)
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
-texture = ExtResource("1_kne1u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-scale = Vector2(6, 6)
-shape = SubResource("RectangleShape2D_a0tk4")
-
-[node name="Buffer" parent="." instance=ExtResource("14_d6rpx")]
-
-[node name="Player" type="CharacterBody2D" parent="Buffer"]
+[node name="Player" type="CharacterBody2D" parent="Node"]
 script = ExtResource("2_tdg3f")
 jump_height = 200.0
 jump_time_to_peak = 0.5
 jump_time_to_decent = 0.2
 combos = Array[ExtResource("3_l6ohk")]([ExtResource("4_oudfo"), ExtResource("5_oudfo")])
 
-[node name="Sprite2D" type="Sprite2D" parent="Buffer/Player"]
+[node name="Sprite2D" type="Sprite2D" parent="Node/Player"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_e80uo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Buffer/Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Player"]
 scale = Vector2(5.35, 5.35)
 shape = SubResource("RectangleShape2D_jka67")
 
-[node name="Camera2D" type="Camera2D" parent="Buffer/Player"]
+[node name="Camera2D" type="Camera2D" parent="Node/Player"]
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 drag_vertical_enabled = true
 
-[node name="Weapon" type="Sprite2D" parent="Buffer/Player"]
+[node name="Weapon" type="Sprite2D" parent="Node/Player"]
 position = Vector2(-45, -86)
 rotation = -2.65465
 scale = Vector2(0.268328, 0.0332031)
 texture = ExtResource("3_cxr5p")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Buffer/Player/Weapon"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node/Player/Weapon"]
 libraries = {
 &"": SubResource("AnimationLibrary_wc5p8")
 }
 
-[node name="ComboAHitbox" type="Area2D" parent="Buffer/Player" groups=["Sword"]]
+[node name="ComboAHitbox" type="Area2D" parent="Node/Player" groups=["Sword"]]
 position = Vector2(-6, -49)
 scale = Vector2(0.268328, 0.0332031)
 collision_layer = 2
@@ -491,18 +452,18 @@ collision_mask = 0
 script = ExtResource("8_l6ohk")
 attack = SubResource("Resource_wi0c6")
 
-[node name="ComboA" type="CollisionShape2D" parent="Buffer/Player/ComboAHitbox" groups=["ComboA"]]
+[node name="ComboA" type="CollisionShape2D" parent="Node/Player/ComboAHitbox" groups=["ComboA"]]
 position = Vector2(617.717, 1445.65)
 scale = Vector2(30, 15)
 shape = SubResource("RectangleShape2D_kne1u")
 disabled = true
 debug_color = Color(0.892607, 0.253495, 0.511318, 0.42)
 
-[node name="FindPlayer" type="Node2D" parent="Buffer/Player/ComboAHitbox" node_paths=PackedStringArray("player")]
+[node name="FindPlayer" type="Node2D" parent="Node/Player/ComboAHitbox" node_paths=PackedStringArray("player")]
 script = ExtResource("5_5ncpa")
 player = NodePath("../..")
 
-[node name="KnockUpHitbox" type="Area2D" parent="Buffer/Player" groups=["Sword"]]
+[node name="KnockUpHitbox" type="Area2D" parent="Node/Player" groups=["Sword"]]
 position = Vector2(-6, -49)
 scale = Vector2(0.268328, 0.0332031)
 collision_layer = 2
@@ -510,51 +471,16 @@ collision_mask = 0
 script = ExtResource("8_l6ohk")
 attack = SubResource("Resource_r3kul")
 
-[node name="KnockUp" type="CollisionShape2D" parent="Buffer/Player/KnockUpHitbox" groups=["KnockUp"]]
+[node name="KnockUp" type="CollisionShape2D" parent="Node/Player/KnockUpHitbox" groups=["KnockUp"]]
 position = Vector2(617.717, 1445.65)
 scale = Vector2(30, 30)
 shape = SubResource("RectangleShape2D_kne1u")
 disabled = true
 debug_color = Color(0.892607, 0.253495, 0.511318, 0.42)
 
-[node name="FindPlayer" type="Node2D" parent="Buffer/Player/KnockUpHitbox" node_paths=PackedStringArray("player")]
+[node name="FindPlayer" type="Node2D" parent="Node/Player/KnockUpHitbox" node_paths=PackedStringArray("player")]
 script = ExtResource("5_5ncpa")
 player = NodePath("../..")
-
-[node name="InputDisplay" type="CanvasLayer" parent="Buffer"]
-
-[node name="ComboLabel" type="RichTextLabel" parent="Buffer/InputDisplay"]
-offset_top = 376.0
-offset_right = 1151.0
-offset_bottom = 976.0
-theme_override_font_sizes/normal_font_size = 42
-bbcode_enabled = true
-text = "Special move displayed here"
-vertical_alignment = 2
-justification_flags = 162
-metadata/_edit_use_anchors_ = true
-
-[node name="BufferLabel" type="Label" parent="Buffer/InputDisplay"]
-offset_top = 320.0
-offset_right = 1151.0
-offset_bottom = 1024.0
-theme_override_fonts/font = SubResource("FontFile_d6rpx")
-theme_override_font_sizes/font_size = 48
-text = "Inputs displayed here"
-vertical_alignment = 2
-justification_flags = 162
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect" type="ColorRect" parent="Buffer/InputDisplay"]
-z_index = -1
-anchors_preset = -1
-anchor_right = 0.15
-anchor_bottom = 1.0
-offset_top = 968.0
-offset_right = 1632.0
-offset_bottom = -56.0
-color = Color(0.165656, 0.165656, 0.165656, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="Dummy" type="Node2D" parent="."]
 position = Vector2(300, 0)
@@ -591,7 +517,31 @@ position = Vector2(0, 1.37091e-05)
 scale = Vector2(13.3, 13.95)
 shape = SubResource("RectangleShape2D_dtqjt")
 
-[connection signal="animation_finished" from="Buffer/Player/Weapon/AnimationPlayer" to="Buffer/Player" method="_on_animation_player_animation_finished"]
+[node name="Platform" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform"]
+position = Vector2(0, 118.86)
+scale = Vector2(10, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/StaticBody2D"]
+texture = ExtResource("1_kne1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_a0tk4")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Platform"]
+position = Vector2(656, -656)
+scale = Vector2(1, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/StaticBody2D2"]
+texture = ExtResource("1_kne1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D2"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_a0tk4")
+
+[connection signal="animation_finished" from="Node/Player/Weapon/AnimationPlayer" to="Node/Player" method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Dummy/Enemy/CollisionShape2D/DummySprite/EnemyHurtbox" to="Dummy/Enemy/CollisionShape2D/DummySprite/EnemyHurtbox" method="_on_area_entered"]
 [connection signal="on_hit" from="Dummy/Enemy/CollisionShape2D/DummySprite/EnemyHurtbox" to="Dummy/Enemy" method="_on_enemy_hurtbox_on_hit"]
 [connection signal="animation_finished" from="Dummy/Enemy/CollisionShape2D/DummySprite/EnemyHurtbox/AnimationEnemy" to="Dummy/Enemy" method="_on_animation_enemy_animation_finished"]

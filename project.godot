@@ -19,7 +19,6 @@ config/icon="uid://cxqtldwkrhvas"
 [autoload]
 
 HitStopManager="*res://Scripts/HitStopManager.gd"
-InputBuffer="*res://Scripts/input_buffer.gd"
 
 [display]
 

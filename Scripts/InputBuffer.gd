@@ -13,19 +13,16 @@ func _input(event):
 
 func _physics_process(_delta):
 	timer += _delta
-	if timer > 0.5:
-		var event = buffer.pop_front()
-		print('execute event %s!' % event)
-		print_buffer(buffer)
-		timer = 0
-
-	if not buffer.is_empty():
-		if buffer[0].is_action_pressed("move_up"):
-			var _event = buffer.pop_front()
+	if timer > 0.3:
+		if $Player.is_on_floor() and Input.is_action_just_pressed("move_up"):
 			$Player.jump()
-	else:
-		buffer.clear()
-
+			var event = buffer.pop_front()
+			#$CanvasLayer/BufferLabel.text = str(buffer)
+			print('execute event %s!'%event)
+			print_buffer(buffer)
+			timer = 0
+		elif Input.is_action_just_pressed("move_up"):
+			buffer.clear()
 
 func print_buffer(b: Array):
 	var p := []
