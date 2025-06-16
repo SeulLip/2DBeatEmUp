@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c0uxw3fysww80"]
+[gd_scene load_steps=19 format=3 uid="uid://c0uxw3fysww80"]
 
 [ext_resource type="Texture2D" uid="uid://b72wnlhi2blg8" path="res://Assets/GjxgeNzW0AA9OXp.png" id="2_e80uo"]
 [ext_resource type="Texture2D" uid="uid://byrq5yyk083ua" path="res://Assets/Dead.png" id="3_cxr5p"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://r1r865h74nqk" path="res://Scripts/FindPlayer.gd" id="5_5ncpa"]
 [ext_resource type="Script" uid="uid://iolwd5nse2v4" path="res://Scripts/States/Idle.gd" id="7_5ncpa"]
 [ext_resource type="Script" uid="uid://cpbe2qy67pu8o" path="res://Scripts/States/State Machine.gd" id="7_dtqjt"]
+[ext_resource type="Script" uid="uid://ceskqr3jbeowe" path="res://Scripts/States/Jump.gd" id="8_5ncpa"]
 [ext_resource type="Script" uid="uid://dddny7qhs3qjn" path="res://Scripts/PlayerHitbox.gd" id="8_l6ohk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q13i1"]
@@ -358,5 +359,23 @@ initial_state = NodePath("Idle")
 script = ExtResource("7_5ncpa")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://iolwd5nse2v4"
+
+[node name="Jump" type="Node" parent="State Machine" node_paths=PackedStringArray("player")]
+script = ExtResource("8_5ncpa")
+player = NodePath("../..")
+jump_height = 400.0
+jump_time_to_peak = 20.0
+jump_time_to_decent = 800.0
+metadata/_custom_type_script = "uid://ceskqr3jbeowe"
+
+[node name="StateDisplay" type="CanvasLayer" parent="State Machine"]
+
+[node name="Label" type="Label" parent="State Machine/StateDisplay"]
+offset_left = -30.0
+offset_top = -88.0
+offset_right = 30.0
+offset_bottom = -54.0
+theme_override_font_sizes/font_size = 24
+text = "State"
 
 [connection signal="animation_finished" from="Weapon/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
