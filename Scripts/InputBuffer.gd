@@ -18,12 +18,7 @@ func _input(event):
 				# Update held state
 				held_directions[action] = event.pressed
 
-				# Update current direction vector
-				var new_direction := get_current_direction()
-				if buffer.is_empty() or buffer.back() != new_direction:
-					if new_direction != Vector2.ZERO:
-						buffer.push_back(new_direction)
-						print_buffer(buffer)
+
 
 func get_current_direction() -> Vector2:
 	var x := int(held_directions["move_right"]) - int(held_directions["move_left"])
@@ -36,17 +31,23 @@ var frame_counter := 0
 func _physics_process(_delta):
 	frame_counter += 1
 
-	if frame_counter >= 16:
-		buffer.clear()
-		print_buffer(buffer)
-		frame_counter = 0
+	if frame_counter % 16:
+		var new_direction := get_current_direction()
+		if buffer.is_empty() or buffer.back() != new_direction:
+			if new_direction != Vector2.ZERO:
+				buffer.push_back(new_direction)
+				print_buffer(buffer)
+			else:
+				buffer.clear()
 
-	if Input.is_action_just_pressed("move_up") and $Player.is_on_floor():
-		if not buffer.is_empty():
-			var event = buffer.pop_front()
-			$Player.jump()
-			print("Execute event %s!" % event)
-			print_buffer(buffer)
+		if Input.is_action_pressed("move_up") and $Player.is_on_floor():
+			if not buffer.is_empty():
+				var first_in_buffer = buffer[0]
+				if first_in_buffer == Vector2(0, -1):
+					var event = buffer.pop_front()
+					$Player.jump()
+					print("Execute event %s!" % event)
+					print_buffer(buffer)
 
 
 

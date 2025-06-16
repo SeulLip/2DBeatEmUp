@@ -13,12 +13,14 @@ config_version=5
 config/name="2D GG or something lol"
 run/main_scene="uid://cgf1e8crmbhpy"
 config/features=PackedStringArray("4.4", "Forward Plus")
+run/max_fps=60
 boot_splash/image="uid://cxqtldwkrhvas"
 config/icon="uid://cxqtldwkrhvas"
 
 [autoload]
 
 HitStopManager="*res://Scripts/HitStopManager.gd"
+FpsCounter="*res://FPSCounter.tscn"
 
 [display]
 
