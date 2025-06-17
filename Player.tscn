@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c0uxw3fysww80"]
+[gd_scene load_steps=21 format=3 uid="uid://c0uxw3fysww80"]
 
 [ext_resource type="Texture2D" uid="uid://b72wnlhi2blg8" path="res://Assets/GjxgeNzW0AA9OXp.png" id="2_e80uo"]
 [ext_resource type="Texture2D" uid="uid://byrq5yyk083ua" path="res://Assets/Dead.png" id="3_cxr5p"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cpbe2qy67pu8o" path="res://Scripts/States/State Machine.gd" id="7_dtqjt"]
 [ext_resource type="Script" uid="uid://ceskqr3jbeowe" path="res://Scripts/States/Jump.gd" id="8_5ncpa"]
 [ext_resource type="Script" uid="uid://dddny7qhs3qjn" path="res://Scripts/PlayerHitbox.gd" id="8_l6ohk"]
+[ext_resource type="Texture2D" uid="uid://dd05ee4rxjgwb" path="res://Assets/icon.svg" id="9_wi0c6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q13i1"]
 
@@ -287,6 +288,8 @@ knockback = 200.0
 link_time = 0.0
 metadata/_custom_type_script = "uid://c5cdmqrqr7ph4"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp6x6"]
+
 [node name="Player" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -363,19 +366,33 @@ metadata/_custom_type_script = "uid://iolwd5nse2v4"
 [node name="Jump" type="Node" parent="State Machine" node_paths=PackedStringArray("player")]
 script = ExtResource("8_5ncpa")
 player = NodePath("../..")
-jump_height = 400.0
-jump_time_to_peak = 20.0
-jump_time_to_decent = 800.0
+jump_height = 300.0
+jump_time_to_peak = 0.5
+jump_time_to_decent = 0.4
 metadata/_custom_type_script = "uid://ceskqr3jbeowe"
 
-[node name="StateDisplay" type="CanvasLayer" parent="State Machine"]
+[node name="Platform" type="Node" parent="."]
 
-[node name="Label" type="Label" parent="State Machine/StateDisplay"]
-offset_left = -30.0
-offset_top = -88.0
-offset_right = 30.0
-offset_bottom = -54.0
-theme_override_font_sizes/font_size = 24
-text = "State"
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform"]
+position = Vector2(0, 118.86)
+scale = Vector2(10, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/StaticBody2D"]
+texture = ExtResource("9_wi0c6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_hp6x6")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Platform"]
+position = Vector2(656, -656)
+scale = Vector2(1, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform/StaticBody2D2"]
+texture = ExtResource("9_wi0c6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D2"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_hp6x6")
 
 [connection signal="animation_finished" from="Weapon/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

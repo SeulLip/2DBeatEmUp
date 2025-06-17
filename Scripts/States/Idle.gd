@@ -5,12 +5,16 @@ class_name Idle
 
 
 func Enter():
+	print("Entered Idle state")
 	var anim_player = player.get_node("Weapon/AnimationPlayer")
 	anim_player.play("Idle")
 
 func Exit():
 	pass
 
-func Physics_Update(delta: float):
-	if Input.is_action_just_pressed("move_up") and player.is_on_floor():
-		Transistioned.emit(self, "Jump")
+func Physics_Update(_delta: float):
+	if Input.is_action_just_pressed("move_up"):
+		print("Jump key pressed!")
+	if Input.is_action_just_pressed("move_up"):
+		print("Jump triggered!")
+		Transitioned.emit(self, "Jump")
