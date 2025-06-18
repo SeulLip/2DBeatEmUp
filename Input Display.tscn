@@ -24,7 +24,7 @@ script = ExtResource("1_qiv4q")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ComboLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="SpecialLabel" type="RichTextLabel" parent="CanvasLayer"]
 offset_right = 1151.0
 offset_bottom = 600.0
 theme_override_font_sizes/normal_font_size = 42

@@ -6,6 +6,11 @@ var timer := 0.0
 @export var player: CharacterBody2D
 @onready var state_machine = $"../StateMachine"
 
+const motions := {
+	"236": [Vector2(0, 1), Vector2(1, 1), Vector2(1, 0)], # ↓ ↘ →
+	"623": [Vector2(1, 0), Vector2(0, 1), Vector2(1, 1)] # → ↓ ↘
+}
+
 var held_directions := {
 	"move_up": false,
 	"move_down": false,
@@ -34,7 +39,7 @@ var frame_counter := 0
 func _physics_process(_delta):
 	frame_counter += 1
 
-	if frame_counter % 16:
+	if frame_counter % 17:
 		var new_direction := get_current_direction()
 		if buffer.is_empty() or buffer.back() != new_direction:
 			if new_direction != Vector2.ZERO:
@@ -43,14 +48,14 @@ func _physics_process(_delta):
 			else:
 				buffer.clear()
 
-		#if Input.is_action_pressed("move_up") and player.is_on_floor():
-			#if not buffer.is_empty():
-				#var first_in_buffer = buffer[0]
-				#if first_in_buffer == Vector2(0, -1):
-					#var event = buffer.pop_front()
-					#state_machine.on_child_transition(state_machine.current_state, "Jump")
-					#print("Execute event %s!" % event)
-					#print_buffer(buffer)
+		if Input.is_action_pressed("move_up") and player.velocity.y > 0.0001:
+			if not buffer.is_empty():
+				var first_in_buffer = buffer[0]
+				if first_in_buffer == Vector2(0, -1) or Vector2(1, -1) or Vector2(-1, -1):
+					var event = buffer.pop_front()
+					state_machine.on_child_transition(state_machine.current_state, "Jump")
+					print("Execute event %s!" % event)
+					print_buffer(buffer)
 
 
 
