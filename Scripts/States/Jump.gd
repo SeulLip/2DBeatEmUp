@@ -28,10 +28,7 @@ func Physics_Update(delta):
 	elif frame_counter > 3:
 
 		if player.is_on_floor():
-			#if abs(player.velocity.x) < 0.000001:
 				Transitioned.emit(self, "Idle")
-			#else:
-				#Transitioned.emit(self, "Walk")
 
  
 func jump():

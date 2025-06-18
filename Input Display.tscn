@@ -25,20 +25,19 @@ script = ExtResource("1_qiv4q")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ComboLabel" type="RichTextLabel" parent="CanvasLayer"]
-offset_top = 376.0
 offset_right = 1151.0
-offset_bottom = 976.0
+offset_bottom = 600.0
 theme_override_font_sizes/normal_font_size = 42
 bbcode_enabled = true
-text = "Special move displayed here"
+text = "[img]res://Assets/ThumbsUpRyoSmol.png"
 vertical_alignment = 2
 justification_flags = 162
 metadata/_edit_use_anchors_ = true
 
 [node name="BufferLabel" type="Label" parent="CanvasLayer"]
-offset_top = 320.0
+offset_top = -56.0
 offset_right = 1151.0
-offset_bottom = 1024.0
+offset_bottom = 648.0
 theme_override_fonts/font = SubResource("FontFile_sy5k4")
 theme_override_font_sizes/font_size = 48
 text = "Inputs displayed here"

@@ -4,7 +4,7 @@ var buffer := []
 var timer := 0.0
 
 @export var player: CharacterBody2D
-@onready var jump_state = "../Jump"
+@onready var state_machine = $"../StateMachine"
 
 var held_directions := {
 	"move_up": false,
@@ -48,7 +48,7 @@ func _physics_process(_delta):
 				var first_in_buffer = buffer[0]
 				if first_in_buffer == Vector2(0, -1):
 					var event = buffer.pop_front()
-					jump_state.Jump()
+					state_machine.on_child_transition(state_machine.current_state, "Jump")
 					print("Execute event %s!" % event)
 					print_buffer(buffer)
 
