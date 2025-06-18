@@ -7,20 +7,32 @@ class_name Jump
 @export var jump_time_to_peak : float
 @export var jump_time_to_decent : float
 
+var frame_counter := 0
+
 @onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_decent * jump_time_to_decent)) * -1.0
 
 
 func Enter():
-		print("Entered Jump state")
-		jump()
+	print("Entered Jump state")
+	frame_counter = 0
 
 func Physics_Update(delta):
+	frame_counter += 1
 	player.velocity.y += gets_gravity() * delta
 	player.move_and_slide()
-	if player.velocity == Vector2.ZERO and player.is_on_floor():
-		Transitioned.emit(self, "Idle")
+	if frame_counter == 3:
+		$"../Walk".Update_Velocity()
+		jump()
+	elif frame_counter > 3:
+
+		if player.is_on_floor():
+			#if abs(player.velocity.x) < 0.000001:
+				Transitioned.emit(self, "Idle")
+			#else:
+				#Transitioned.emit(self, "Walk")
+
  
 func jump():
 		if player.is_on_floor():

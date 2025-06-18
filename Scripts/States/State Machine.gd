@@ -10,10 +10,11 @@ func _ready():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transition)
-			
+
 	if initial_state:
 		initial_state.Enter()
 		current_state = initial_state
+	UpdateLabel()
 #Initializes the state machine
 func _process(delta):
 	if current_state:
@@ -39,3 +40,6 @@ func on_child_transition(state, new_state_name):
 	new_state.Enter()
 	
 	current_state = new_state
+	UpdateLabel()
+func UpdateLabel():
+	label.text = current_state.name
