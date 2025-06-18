@@ -2,7 +2,7 @@ extends State
 class_name Idle
 
 @export var player: CharacterBody2D
-
+@onready var jump_state = $"../Jump"
 
 func Enter():
 	print("Entered Idle state")
@@ -13,7 +13,10 @@ func Enter():
 func Exit():
 	pass
 
-func Physics_Update(_delta: float):
+func Physics_Update(delta: float):
+	var gravity = jump_state.fall_gravity
+	player.velocity.y += gravity * delta
+	player.move_and_slide()
 	var direction := Input.get_axis("move_left", "move_right")
 	if Input.is_action_just_pressed("move_up"):
 		print("Jump triggered!")

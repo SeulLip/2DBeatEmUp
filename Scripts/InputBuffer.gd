@@ -43,14 +43,14 @@ func _physics_process(_delta):
 			else:
 				buffer.clear()
 
-		if Input.is_action_pressed("move_up") and player.is_on_floor():
-			if not buffer.is_empty():
-				var first_in_buffer = buffer[0]
-				if first_in_buffer == Vector2(0, -1):
-					var event = buffer.pop_front()
-					state_machine.on_child_transition(state_machine.current_state, "Jump")
-					print("Execute event %s!" % event)
-					print_buffer(buffer)
+		#if Input.is_action_pressed("move_up") and player.is_on_floor():
+			#if not buffer.is_empty():
+				#var first_in_buffer = buffer[0]
+				#if first_in_buffer == Vector2(0, -1):
+					#var event = buffer.pop_front()
+					#state_machine.on_child_transition(state_machine.current_state, "Jump")
+					#print("Execute event %s!" % event)
+					#print_buffer(buffer)
 
 
 

@@ -2,6 +2,7 @@ extends State
 class_name Walk
 
 @export var player: CharacterBody2D
+@onready var jump_state = $"../Jump"
 
 @export var walk_speed: float
 
@@ -13,6 +14,9 @@ func Exit():
 	pass
 
 func Physics_Update(delta: float):
+	var gravity = jump_state.fall_gravity
+	player.velocity.y += gravity * delta
+	
 	Update_Velocity()
 	if player.velocity == Vector2.ZERO:
 		Transitioned.emit(self, "Idle")
