@@ -19,7 +19,7 @@ cache/0/48/0/underline_position = 0.0
 cache/0/48/0/underline_thickness = 0.0
 cache/0/48/0/scale = 1.0
 
-[node name="Node" type="Node"]
+[node name="InputBuffer" type="Node"]
 script = ExtResource("1_qiv4q")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

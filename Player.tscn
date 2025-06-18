@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://c5cdmqrqr7ph4" path="res://Scripts/AttackData.gd" id="3_hp6x6"]
 [ext_resource type="Script" uid="uid://r1r865h74nqk" path="res://Scripts/FindPlayer.gd" id="5_5ncpa"]
 [ext_resource type="Script" uid="uid://iolwd5nse2v4" path="res://Scripts/States/Idle.gd" id="7_5ncpa"]
-[ext_resource type="Script" uid="uid://cpbe2qy67pu8o" path="res://Scripts/States/State Machine.gd" id="7_dtqjt"]
+[ext_resource type="Script" uid="uid://cpbe2qy67pu8o" path="res://Scripts/States/StateMachine.gd" id="7_dtqjt"]
 [ext_resource type="Script" uid="uid://ceskqr3jbeowe" path="res://Scripts/States/Jump.gd" id="8_5ncpa"]
 [ext_resource type="Script" uid="uid://dddny7qhs3qjn" path="res://Scripts/PlayerHitbox.gd" id="8_l6ohk"]
 [ext_resource type="Script" uid="uid://b2ykaikrx8cdt" path="res://Scripts/States/Walk.gd" id="9_hp6x6"]
@@ -307,6 +307,7 @@ text = "State"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -370,17 +371,17 @@ debug_color = Color(0.892607, 0.253495, 0.511318, 0.42)
 script = ExtResource("5_5ncpa")
 player = NodePath("../..")
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "label")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "label")]
 script = ExtResource("7_dtqjt")
 initial_state = NodePath("Idle")
 label = NodePath("../Label")
 
-[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("player")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("7_5ncpa")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://iolwd5nse2v4"
 
-[node name="Jump" type="Node" parent="State Machine" node_paths=PackedStringArray("player")]
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("8_5ncpa")
 player = NodePath("../..")
 jump_height = 300.0
@@ -388,7 +389,7 @@ jump_time_to_peak = 0.5
 jump_time_to_decent = 0.4
 metadata/_custom_type_script = "uid://ceskqr3jbeowe"
 
-[node name="Walk" type="Node" parent="State Machine" node_paths=PackedStringArray("player")]
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("9_hp6x6")
 player = NodePath("../..")
 walk_speed = 300.0

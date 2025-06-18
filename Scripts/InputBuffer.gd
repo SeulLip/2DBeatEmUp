@@ -3,6 +3,9 @@ extends Node
 var buffer := []
 var timer := 0.0
 
+@export var player: CharacterBody2D
+@onready var jump_state = "../Jump"
+
 var held_directions := {
 	"move_up": false,
 	"move_down": false,
@@ -40,12 +43,12 @@ func _physics_process(_delta):
 			else:
 				buffer.clear()
 
-		if Input.is_action_pressed("move_up") and $Player.is_on_floor():
+		if Input.is_action_pressed("move_up") and player.is_on_floor():
 			if not buffer.is_empty():
 				var first_in_buffer = buffer[0]
 				if first_in_buffer == Vector2(0, -1):
 					var event = buffer.pop_front()
-					$Player.jump()
+					jump_state.Jump()
 					print("Execute event %s!" % event)
 					print_buffer(buffer)
 
