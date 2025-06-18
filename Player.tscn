@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c0uxw3fysww80"]
+[gd_scene load_steps=24 format=3 uid="uid://c0uxw3fysww80"]
 
 [ext_resource type="Texture2D" uid="uid://b72wnlhi2blg8" path="res://Assets/GjxgeNzW0AA9OXp.png" id="2_e80uo"]
 [ext_resource type="Texture2D" uid="uid://byrq5yyk083ua" path="res://Assets/Dead.png" id="3_cxr5p"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://r1r865h74nqk" path="res://Scripts/FindPlayer.gd" id="5_5ncpa"]
 [ext_resource type="Script" uid="uid://iolwd5nse2v4" path="res://Scripts/States/Idle.gd" id="7_5ncpa"]
 [ext_resource type="Script" uid="uid://cpbe2qy67pu8o" path="res://Scripts/States/StateMachine.gd" id="7_dtqjt"]
+[ext_resource type="Script" uid="uid://dt2lpmri3a131" path="res://Scripts/States/Crouch.gd" id="8_3tkgg"]
 [ext_resource type="Script" uid="uid://ceskqr3jbeowe" path="res://Scripts/States/Jump.gd" id="8_5ncpa"]
 [ext_resource type="Script" uid="uid://dddny7qhs3qjn" path="res://Scripts/PlayerHitbox.gd" id="8_l6ohk"]
 [ext_resource type="Script" uid="uid://b2ykaikrx8cdt" path="res://Scripts/States/Walk.gd" id="9_hp6x6"]
@@ -111,6 +112,68 @@ tracks/3/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_hp6x6"]
+resource_name = "Crouch"
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-30, -0.25, 0, 0.25, 0, -30, -0.25, 0, 0.25, 0, -30, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.333333, 0.666667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-19, -0.25, 0, 0.25, 0, -14, -0.25, 0, 0.25, 0, -19, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.333333, 0.666667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.174533, -0.25, 0, 0.25, 0, -0.10472, -0.25, 0, 0.25, 0, -0.174533, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.333333, 0.666667)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 17.25), Vector2(0, 20.25), Vector2(0, 17.25)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.067757), Vector2(0.1, 0.0640187), Vector2(0.1, 0.067757)]
+}
+
 [sub_resource type="Animation" id="Animation_kne1u"]
 resource_name = "Idle"
 length = 0.66667
@@ -147,6 +210,30 @@ tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(-0.174533, -0.25, 0, 0.25, 0, -0.0959931, -0.25, 0, 0.25, 0, -0.174533, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.3334, 0.66667)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -0.249994), Vector2(0, 1.75001), Vector2(0, -0.249994)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.100467), Vector2(0.1, 0.096729), Vector2(0.1, 0.100467)]
 }
 
 [sub_resource type="Animation" id="Animation_wi0c6"]
@@ -257,11 +344,36 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Sprite2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -0.249994)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sprite2D:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.100467)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wc5p8"]
 _data = {
 &"ComboA1": SubResource("Animation_jka67"),
 &"ComboA2": SubResource("Animation_tdg3f"),
+&"Crouch": SubResource("Animation_hp6x6"),
 &"Idle": SubResource("Animation_kne1u"),
 &"KnockUp": SubResource("Animation_wi0c6"),
 &"RESET": SubResource("Animation_i5arm")
@@ -310,7 +422,8 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+position = Vector2(0, -0.249994)
+scale = Vector2(0.1, 0.100467)
 texture = ExtResource("2_e80uo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -380,6 +493,11 @@ label = NodePath("../Label")
 script = ExtResource("7_5ncpa")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://iolwd5nse2v4"
+
+[node name="Crouch" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("8_3tkgg")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dt2lpmri3a131"
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("8_5ncpa")

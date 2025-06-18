@@ -21,10 +21,11 @@ func Physics_Update(delta: float):
 	if player.velocity == Vector2.ZERO:
 		Transitioned.emit(self, "Idle")
 	if Input.is_action_just_pressed("move_up"):
-		print("Jump key pressed!")
-	if Input.is_action_just_pressed("move_up"):
 		print("Jump triggered!")
 		Transitioned.emit(self, "Jump")
+	if Input.is_action_just_pressed("move_down"):
+		print("Crouch triggered!")
+		Transitioned.emit(self, "Crouch")
 	player.move_and_slide()
 
 func Update_Velocity():
