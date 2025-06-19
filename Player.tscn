@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c0uxw3fysww80"]
+[gd_scene load_steps=32 format=3 uid="uid://c0uxw3fysww80"]
 
 [ext_resource type="Texture2D" uid="uid://b72wnlhi2blg8" path="res://Assets/GjxgeNzW0AA9OXp.png" id="2_e80uo"]
 [ext_resource type="Texture2D" uid="uid://byrq5yyk083ua" path="res://Assets/Dead.png" id="3_cxr5p"]
@@ -348,7 +348,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("../j_LightHitbox/j_Light:disabled")
+tracks/9/path = NodePath("../j_LightHitbox/j_Light1st_1:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -360,14 +360,164 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("../j_LightHitbox/j_Light2:disabled")
+tracks/10/path = NodePath("../j_LightHitbox/j_Light1st_2:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../j_LightHitbox/j_Light1st_3:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../j_LightHitbox/j_Light2nd_1:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../j_LightHitbox/j_Light2nd_2:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_l6ohk"]
+resource_name = "j_Light"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.2, 0.233333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.268328, 0.0332031), Vector2(0.268328, 0.0332031), Vector2(0.268328, 0.0332031), Vector2(0.268328, 0.0332031), Vector2(0.268328, 0.0332031), Vector2(0.268328, 0.0332031)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.2, 0.233333, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-0.479966, -0.479966, 0.668461, 0.668461, 2.35794, 2.35794, 2.69653]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.2, 0.233333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(98, -99), Vector2(137, -54), Vector2(68, 68), Vector2(-30, 88), Vector2(-125, 96), Vector2(-147, 8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../j_LightHitbox/j_Light1st_1:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.166667, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../j_LightHitbox/j_Light1st_2:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.166667, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../j_LightHitbox/j_Light1st_3:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.166667, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../j_LightHitbox/j_Light2nd_1:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.266667, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../j_LightHitbox/j_Light2nd_2:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.266667, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../StateMachine/j_Light")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_action_complate"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_jka67"]
@@ -433,84 +583,6 @@ tracks/4/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_l6ohk"]
-resource_name = "j_Light"
-length = 0.400003
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.166667, 0.2, 0.233333, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.268328, 0.0332031), Vector2(0.268328, 0.0332031), Vector2(0.268328, 0.0332031), Vector2(0.268328, 0.0332031), Vector2(0.268328, 0.0332031), Vector2(0.268328, 0.0332031)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.166667, 0.2, 0.233333, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [-0.479966, -0.479966, 0.668461, 0.668461, 2.35794, 2.35794, 2.69653]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.166667, 0.2, 0.233333, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(98, -99), Vector2(137, -54), Vector2(68, 68), Vector2(-30, 88), Vector2(-125, 96), Vector2(-147, 8)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../j_LightHitbox/j_Light:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.166667, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../j_LightHitbox/j_Light2:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.266667, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../StateMachine/j_Light")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"on_action_complate"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wc5p8"]
 _data = {
 &"ComboA2": SubResource("Animation_tdg3f"),
@@ -533,6 +605,21 @@ metadata/_custom_type_script = "uid://c5cdmqrqr7ph4"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbfsw"]
 size = Vector2(13.7268, 32.1255)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oudfo"]
+size = Vector2(268.328, 1445.65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6rpx"]
+size = Vector2(357.771, 1445.65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3kul"]
+size = Vector2(383.859, 1204.71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jatw7"]
+size = Vector2(268.328, 722.824)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rv870"]
+size = Vector2(387.585, 963.766)
 
 [sub_resource type="Resource" id="Resource_5tmop"]
 resource_name = "KnockUpAttack"
@@ -613,15 +700,39 @@ position = Vector2(-6, -49)
 scale = Vector2(0.268328, 0.0332031)
 collision_layer = 2
 collision_mask = 0
+monitoring = false
 script = ExtResource("8_l6ohk")
 attack = SubResource("Resource_pylmc")
 
-[node name="j_Light" type="CollisionPolygon2D" parent="j_LightHitbox"]
-polygon = PackedVector2Array(-67.0821, 4126.12, -67.0821, 5330.83, 320.503, 5330.83, 320.503, 4608, 469.575, 4608, 469.575, 3403.3, 529.203, 3403.3, 529.203, 1957.65, 260.875, 1957.65, 260.875, 3162.36, 111.803, 3162.36, 111.803, 4126.12)
+[node name="j_Light1st_1" type="CollisionShape2D" parent="j_LightHitbox"]
+position = Vector2(395.039, 2680.47)
+shape = SubResource("RectangleShape2D_oudfo")
 disabled = true
+debug_color = Color(0.894118, 0.254902, 0.509804, 0.419608)
 
-[node name="j_Light2" type="CollisionPolygon2D" parent="j_LightHitbox"]
-polygon = PackedVector2Array(81.9892, 3644.24, 350.318, 3644.24, 350.318, 4367.06, 201.246, 4367.06, 201.246, 5089.89, -186.339, 5089.89, -186.339, 4126.12, 81.9892, 4126.12)
+[node name="j_Light1st_2" type="CollisionShape2D" parent="j_LightHitbox"]
+position = Vector2(290.689, 3885.18)
+shape = SubResource("RectangleShape2D_d6rpx")
+disabled = true
+debug_color = Color(0.894118, 0.254902, 0.509804, 0.419608)
+
+[node name="j_Light1st_3" type="CollisionShape2D" parent="j_LightHitbox"]
+position = Vector2(128.574, 4728.47)
+shape = SubResource("RectangleShape2D_r3kul")
+disabled = true
+debug_color = Color(0.894118, 0.254902, 0.509804, 0.419608)
+
+[node name="j_Light2nd_1" type="CollisionShape2D" parent="j_LightHitbox"]
+position = Vector2(216.153, 4005.65)
+shape = SubResource("RectangleShape2D_jatw7")
+disabled = true
+debug_color = Color(0.894118, 0.254902, 0.509804, 0.419608)
+
+[node name="j_Light2nd_2" type="CollisionShape2D" parent="j_LightHitbox"]
+position = Vector2(7.45356, 4608)
+shape = SubResource("RectangleShape2D_rv870")
+disabled = true
+debug_color = Color(0.894118, 0.254902, 0.509804, 0.419608)
 
 [node name="FindPlayer" type="Node2D" parent="j_LightHitbox" node_paths=PackedStringArray("player")]
 script = ExtResource("5_5ncpa")
@@ -688,6 +799,7 @@ metadata/_custom_type_script = "uid://bwmdubn7k13fv"
 [node name="Platforms" type="Node" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platforms"]
+visible = false
 position = Vector2(0, 118.86)
 scale = Vector2(10, 1)
 
