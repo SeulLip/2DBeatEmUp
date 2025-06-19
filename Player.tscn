@@ -14,55 +14,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q13i1"]
 
-[sub_resource type="Animation" id="Animation_jka67"]
-resource_name = "ComboA1"
-length = 0.76667
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(-0.884882, -0.25, 0, 0.25, 0, -1.71566, -0.25, 0, 0.25, 0, -2.65465, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.178024, -0.25, 0, 0.25, 0, 2.96357, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 1.54811, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.1, 0.166667, 0.233333, 0.266667, 0.3, 0.60002, 0.76667)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(-20, -0.25, 0, 0.25, 0, -51, -0.25, 0, 0.25, 0, -45, -0.25, 0, 0.25, 0, 126, -0.25, 0, 0.25, 0, 75, -0.25, 0, 0.25, 0, -42.65, -0.25, 0, 0.25, 0, 15.465, -0.25, 0, 0.25, 0, 72, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.1, 0.166667, 0.233333, 0.266667, 0.3, 0.60002, 0.76667)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(-89, -0.25, 0, 0.25, 0, -135, -0.25, 0, 0.25, 0, -86, -0.25, 0, 0.25, 0, -1.00001, -0.25, 0, 0.25, 0, 22, -0.25, 0, 0.25, 0, 22, -0.25, 0, 0.25, 0, 22, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.1, 0.166667, 0.233333, 0.266667, 0.3, 0.60002, 0.76667)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../ComboAHitbox/ComboA:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.2, 0.233395, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-
 [sub_resource type="Animation" id="Animation_tdg3f"]
 resource_name = "ComboA2"
 length = 0.833337
@@ -369,14 +320,63 @@ tracks/6/keys = {
 "values": [Vector2(0.1, 0.100467)]
 }
 
+[sub_resource type="Animation" id="Animation_jka67"]
+resource_name = "s_Light"
+length = 0.76667
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.884882, -0.25, 0, 0.25, 0, -1.71566, -0.25, 0, 0.25, 0, -2.65465, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.178024, -0.25, 0, 0.25, 0, 2.96357, -0.25, 0, 0.25, 0, 3.14159, -0.25, 0, 0.25, 0, 1.54811, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.233333, 0.266667, 0.3, 0.60002, 0.76667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-20, -0.25, 0, 0.25, 0, -51, -0.25, 0, 0.25, 0, -45, -0.25, 0, 0.25, 0, 126, -0.25, 0, 0.25, 0, 75, -0.25, 0, 0.25, 0, -42.65, -0.25, 0, 0.25, 0, 15.465, -0.25, 0, 0.25, 0, 72, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.233333, 0.266667, 0.3, 0.60002, 0.76667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-89, -0.25, 0, 0.25, 0, -135, -0.25, 0, 0.25, 0, -86, -0.25, 0, 0.25, 0, -1.00001, -0.25, 0, 0.25, 0, 22, -0.25, 0, 0.25, 0, 22, -0.25, 0, 0.25, 0, 22, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.233333, 0.266667, 0.3, 0.60002, 0.76667)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ComboAHitbox/ComboA:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.233395, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wc5p8"]
 _data = {
-&"ComboA1": SubResource("Animation_jka67"),
 &"ComboA2": SubResource("Animation_tdg3f"),
 &"Crouch": SubResource("Animation_hp6x6"),
 &"Idle": SubResource("Animation_kne1u"),
 &"KnockUp": SubResource("Animation_wi0c6"),
-&"RESET": SubResource("Animation_i5arm")
+&"RESET": SubResource("Animation_i5arm"),
+&"s_Light": SubResource("Animation_jka67")
 }
 
 [sub_resource type="Resource" id="Resource_pylmc"]
