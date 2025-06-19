@@ -29,7 +29,9 @@ func Physics_Update(delta):
 
 		if player.is_on_floor():
 				Transitioned.emit(self, "Idle")
-
+	if Input.is_action_just_pressed("light_attack"):
+		print("j_Light triggered!")
+		Transitioned.emit(self, "j_Light")
  
 func jump():
 		if player.is_on_floor():

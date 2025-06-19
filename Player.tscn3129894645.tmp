@@ -680,9 +680,8 @@ script = ExtResource("11_l6ohk")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://bbojn26rr1rpm"
 
-[node name="j_Light" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="j_Light" type="Node" parent="StateMachine"]
 script = ExtResource("12_oudfo")
-player = NodePath("../..")
 metadata/_custom_type_script = "uid://bwmdubn7k13fv"
 
 [node name="Platforms" type="Node" parent="."]

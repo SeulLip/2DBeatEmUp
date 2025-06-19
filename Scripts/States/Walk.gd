@@ -26,6 +26,9 @@ func Physics_Update(delta: float):
 	if Input.is_action_just_pressed("move_down"):
 		print("Crouch triggered!")
 		Transitioned.emit(self, "Crouch")
+	if Input.is_action_just_pressed("light_attack"):
+		print("s_Light triggered!")
+		Transitioned.emit(self, "s_Light")
 	player.move_and_slide()
 
 func Update_Velocity():

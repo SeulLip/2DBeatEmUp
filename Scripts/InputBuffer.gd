@@ -58,14 +58,14 @@ func _physics_process(_delta):
 					print_buffer(buffer)
 
 #Attacks
-		if Input.is_action_pressed("light_attack") and player.is_on_floor():
-			if not buffer.is_empty():
-				var first_in_buffer = buffer[0]
-				if first_in_buffer == Vector2(0, 1):
-					var event = buffer.pop_front()
-					state_machine.on_child_transition(state_machine.current_state, "Crouch")
-					print("s_Light!")
-					print_buffer(buffer)
+		#if Input.is_action_pressed("light_attack") and player.is_on_floor():
+			#if not buffer.is_empty():
+				#var first_in_buffer = buffer[0]
+				#if first_in_buffer == Vector2(0, 1):
+					#var event = buffer.pop_front()
+					#state_machine.on_child_transition(state_machine.current_state, "Crouch")
+					#print("s_Light!")
+					#print_buffer(buffer)
 func print_buffer(b: Array):
 	var symbols := []
 
