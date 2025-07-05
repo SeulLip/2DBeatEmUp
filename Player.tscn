@@ -1,18 +1,20 @@
-[gd_scene load_steps=32 format=3 uid="uid://c0uxw3fysww80"]
+[gd_scene load_steps=34 format=3 uid="uid://c0uxw3fysww80"]
 
-[ext_resource type="Texture2D" uid="uid://b72wnlhi2blg8" path="res://Assets/GjxgeNzW0AA9OXp.png" id="2_e80uo"]
-[ext_resource type="Texture2D" uid="uid://byrq5yyk083ua" path="res://Assets/Dead.png" id="3_cxr5p"]
+[ext_resource type="Texture2D" uid="uid://b72wnlhi2blg8" path="res://Assets/Art/GjxgeNzW0AA9OXp.png" id="2_e80uo"]
+[ext_resource type="Texture2D" uid="uid://byrq5yyk083ua" path="res://Assets/Art/Dead.png" id="3_cxr5p"]
 [ext_resource type="Script" uid="uid://c5cdmqrqr7ph4" path="res://Scripts/AttackData.gd" id="3_hp6x6"]
 [ext_resource type="Script" uid="uid://r1r865h74nqk" path="res://Scripts/FindPlayer.gd" id="5_5ncpa"]
 [ext_resource type="Script" uid="uid://iolwd5nse2v4" path="res://Scripts/States/Idle.gd" id="7_5ncpa"]
 [ext_resource type="Script" uid="uid://cpbe2qy67pu8o" path="res://Scripts/States/StateMachine.gd" id="7_dtqjt"]
 [ext_resource type="Script" uid="uid://dt2lpmri3a131" path="res://Scripts/States/Crouch.gd" id="8_3tkgg"]
-[ext_resource type="Script" uid="uid://ceskqr3jbeowe" path="res://Scripts/States/Jump.gd" id="8_5ncpa"]
+[ext_resource type="Script" uid="uid://ceskqr3jbeowe" path="res://Scripts/States/Airborne.gd" id="8_5ncpa"]
 [ext_resource type="Script" uid="uid://dddny7qhs3qjn" path="res://Scripts/PlayerHitbox.gd" id="8_l6ohk"]
 [ext_resource type="Script" uid="uid://b2ykaikrx8cdt" path="res://Scripts/States/Walk.gd" id="9_hp6x6"]
-[ext_resource type="Texture2D" uid="uid://dd05ee4rxjgwb" path="res://Assets/icon.svg" id="9_wi0c6"]
+[ext_resource type="Texture2D" uid="uid://dd05ee4rxjgwb" path="res://Assets/Art/icon.svg" id="9_wi0c6"]
 [ext_resource type="Script" uid="uid://bbojn26rr1rpm" path="res://Scripts/States/s_Light.gd" id="11_l6ohk"]
 [ext_resource type="Script" uid="uid://bwmdubn7k13fv" path="res://Scripts/States/j_Light.gd" id="12_oudfo"]
+[ext_resource type="Script" uid="uid://dyw70vomgcd13" path="res://Scripts/States/PreJump.gd" id="13_d6rpx"]
+[ext_resource type="Script" uid="uid://56amqxwqr24" path="res://Scripts/States/Jump.gd" id="14_r3kul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q13i1"]
 
@@ -672,6 +674,7 @@ scale = Vector2(0.268328, 0.0332031)
 texture = ExtResource("3_cxr5p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon"]
+callback_mode_process = 0
 libraries = {
 &"": SubResource("AnimationLibrary_wc5p8")
 }
@@ -684,7 +687,7 @@ collision_mask = 0
 script = ExtResource("8_l6ohk")
 attack = SubResource("Resource_pylmc")
 
-[node name="s_Light" type="CollisionShape2D" parent="s_LightHitbox" groups=["ComboA"]]
+[node name="s_Light" type="CollisionShape2D" parent="s_LightHitbox"]
 position = Vector2(617.717, 1445.65)
 scale = Vector2(30, 15)
 shape = SubResource("RectangleShape2D_pbfsw")
@@ -746,7 +749,7 @@ collision_mask = 0
 script = ExtResource("8_l6ohk")
 attack = SubResource("Resource_5tmop")
 
-[node name="KnockUp" type="CollisionShape2D" parent="KnockUpHitbox" groups=["KnockUp"]]
+[node name="KnockUp" type="CollisionShape2D" parent="KnockUpHitbox"]
 position = Vector2(617.717, 1445.65)
 scale = Vector2(30, 30)
 shape = SubResource("RectangleShape2D_pbfsw")
@@ -772,14 +775,6 @@ script = ExtResource("8_3tkgg")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://dt2lpmri3a131"
 
-[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
-script = ExtResource("8_5ncpa")
-player = NodePath("../..")
-jump_height = 300.0
-jump_time_to_peak = 0.5
-jump_time_to_decent = 0.4
-metadata/_custom_type_script = "uid://ceskqr3jbeowe"
-
 [node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("9_hp6x6")
 player = NodePath("../..")
@@ -795,6 +790,23 @@ metadata/_custom_type_script = "uid://bbojn26rr1rpm"
 script = ExtResource("12_oudfo")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://bwmdubn7k13fv"
+
+[node name="Airborne" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("8_5ncpa")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://ceskqr3jbeowe"
+
+[node name="PreJump" type="Node" parent="StateMachine"]
+script = ExtResource("13_d6rpx")
+metadata/_custom_type_script = "uid://dyw70vomgcd13"
+
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("14_r3kul")
+player = NodePath("../..")
+jump_height = 300.0
+jump_time_to_peak = 0.3
+jump_time_to_decent = 0.4
+metadata/_custom_type_script = "uid://56amqxwqr24"
 
 [node name="Platforms" type="Node" parent="."]
 

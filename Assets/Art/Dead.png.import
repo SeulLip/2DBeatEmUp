@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6gxs86ycpwqo"
-path="res://.godot/imported/ThumbsUpRyo.png-b0d8ccbec9f65914ba1f6381ebfc3894.ctex"
+uid="uid://byrq5yyk083ua"
+path="res://.godot/imported/Dead.png-fef1c9b3a43aea6696545c759d645215.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ThumbsUpRyo.png"
-dest_files=["res://.godot/imported/ThumbsUpRyo.png-b0d8ccbec9f65914ba1f6381ebfc3894.ctex"]
+source_file="res://Assets/Art/Dead.png"
+dest_files=["res://.godot/imported/Dead.png-fef1c9b3a43aea6696545c759d645215.ctex"]
 
 [params]
 

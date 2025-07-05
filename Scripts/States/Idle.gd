@@ -17,19 +17,18 @@ func Physics_Update(delta: float):
 	var gravity = jump_state.fall_gravity
 	player.velocity.y += gravity * delta
 	player.move_and_slide()
+	
 	var direction := Input.get_axis("move_left", "move_right")
-	if Input.is_action_just_pressed("move_up"):
-		print("Jump triggered!")
-		Transitioned.emit(self, "Jump")
+	
+	if $"../../InputBuffer".has_jump_input():
+		print("PreJump triggered!")
+		Transitioned.emit(self, "PreJump")
 	if player.is_on_floor() and abs(direction) > 0.000001:
 		print("Walk triggered!")
 		Transitioned.emit(self, "Walk")
-	if Input.is_action_just_pressed("move_down"):
+	if $"../../InputBuffer".has_crouch_input():
 		print("Crouch triggered!")
 		Transitioned.emit(self, "Crouch")
-	elif Input.is_action_pressed("move_down"):
-		print("Crouch triggered!")
-		Transitioned.emit(self, "Crouch")
-	if Input.is_action_just_pressed("light_attack"):
+	if $"../../InputBuffer".has_lightattack_input():
 		print("s_Light triggered!")
 		Transitioned.emit(self, "s_Light")

@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cgf1e8crmbhpy" path="res://Input Display.tscn" id="1_c2ibq"]
 [ext_resource type="PackedScene" uid="uid://c0uxw3fysww80" path="res://Player.tscn" id="2_3dxm6"]
 [ext_resource type="Script" uid="uid://jaxgqhstkqls" path="res://Enemy.gd" id="11_hhcpw"]
-[ext_resource type="Texture2D" uid="uid://cet50axnstwpk" path="res://Assets/6ecb0103c1e00cdb6eaf49272cadb378.jpg" id="12_mxvw5"]
+[ext_resource type="Texture2D" uid="uid://cet50axnstwpk" path="res://Assets/Art/6ecb0103c1e00cdb6eaf49272cadb378.jpg" id="12_mxvw5"]
 [ext_resource type="Script" uid="uid://o4prts8kb3pj" path="res://Scripts/EnemyHurtbox.gd" id="13_xrxkg"]
-[ext_resource type="Texture2D" uid="uid://dd05ee4rxjgwb" path="res://Assets/icon.svg" id="14_sqvbp"]
+[ext_resource type="Texture2D" uid="uid://dd05ee4rxjgwb" path="res://Assets/Art/icon.svg" id="14_sqvbp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtqjt"]
 friction = 0.4

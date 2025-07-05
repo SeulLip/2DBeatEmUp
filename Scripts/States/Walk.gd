@@ -20,13 +20,13 @@ func Physics_Update(delta: float):
 	Update_Velocity()
 	if player.velocity == Vector2.ZERO:
 		Transitioned.emit(self, "Idle")
-	if Input.is_action_just_pressed("move_up"):
-		print("Jump triggered!")
-		Transitioned.emit(self, "Jump")
-	if Input.is_action_just_pressed("move_down"):
+	if $"../../InputBuffer".has_jump_input():
+		print("PreJump triggered!")
+		Transitioned.emit(self, "PreJump")
+	if $"../../InputBuffer".has_crouch_input():
 		print("Crouch triggered!")
 		Transitioned.emit(self, "Crouch")
-	if Input.is_action_just_pressed("light_attack"):
+	if $"../../InputBuffer".has_lightattack_input():
 		print("s_Light triggered!")
 		Transitioned.emit(self, "s_Light")
 	player.move_and_slide()

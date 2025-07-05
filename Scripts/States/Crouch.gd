@@ -17,8 +17,8 @@ func Physics_Update(delta: float):
 	player.velocity.y += gravity * delta
 	player.move_and_slide()
 
-	if Input.is_action_just_pressed("move_up"):
-		print("Jump triggered!")
-		Transitioned.emit(self, "Jump")
+	if $"../../InputBuffer".has_jump_input():
+		print("PreJump triggered!")
+		Transitioned.emit(self, "PreJump")
 	if Input.is_action_just_released("move_down"):
 		Transitioned.emit(self, "Idle")

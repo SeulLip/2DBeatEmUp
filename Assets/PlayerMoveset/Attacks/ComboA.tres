@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_uy0q6")
 damage = 0.0
-animation = &"ComboA1"
+animation = &"s_Light"
 knockup = 0.0
 knockback = 200.0
 link_time = 0.3

@@ -19,4 +19,4 @@ func Physics_Update(delta: float):
 	if player.is_on_floor():
 		Transitioned.emit(self, "Idle")
 func on_action_complate() -> void:
-	pass
+	Transitioned.emit(self, "Airborne")

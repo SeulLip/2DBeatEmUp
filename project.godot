@@ -14,7 +14,8 @@ config/name="2D GG or something lol"
 run/main_scene="uid://mttvbfkx7je5"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
-boot_splash/image="uid://cxqtldwkrhvas"
+boot_splash/fullsize=false
+boot_splash/image="uid://if14hyfngius"
 config/icon="uid://cxqtldwkrhvas"
 
 [autoload]
@@ -29,8 +30,6 @@ enabled=PackedStringArray()
 [global_group]
 
 Sword=""
-ComboA=""
-KnockUp=""
 
 [input]
 

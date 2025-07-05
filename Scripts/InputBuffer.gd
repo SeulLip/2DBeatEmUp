@@ -6,11 +6,6 @@ var timer := 0.0
 @export var player: CharacterBody2D
 @onready var state_machine = $"../StateMachine"
 
-const motions := {
-	"236": [Vector2(0, 1), Vector2(1, 1), Vector2(1, 0)], # ↓ ↘ →
-	"623": [Vector2(1, 0), Vector2(0, 1), Vector2(1, 1)] # → ↓ ↘
-}
-
 var held_directions := {
 	"move_up": false,
 	"move_down": false,
@@ -25,8 +20,21 @@ func _input(event):
 			if InputMap.action_has_event(action, event):
 				# Update held state
 				held_directions[action] = event.pressed
-
-
+func has_lightattack_input():
+	return Input.is_action_just_pressed("light_attack")
+	
+func has_jump_input():
+	return Input.is_action_pressed("move_up")
+	#if not Input.is_action_pressed("move_up"):
+		#return false
+	#if player.velocity.y > 0.0001:
+		#if not buffer.is_empty():
+			#var first_in_buffer = buffer[0]
+			#if first_in_buffer == Vector2(0, -1) or Vector2(1, -1) or Vector2(-1, -1):
+				#var event = buffer.pop_front()
+				#return true 
+func has_crouch_input():
+	return Input.is_action_just_pressed("move_down")
 
 func get_current_direction() -> Vector2:
 	var x := int(held_directions["move_right"]) - int(held_directions["move_left"])
@@ -47,25 +55,7 @@ func _physics_process(_delta):
 				print_buffer(buffer)
 			else:
 				buffer.clear()
-#Jump 
-		if Input.is_action_pressed("move_up") and player.velocity.y > 0.0001:
-			if not buffer.is_empty():
-				var first_in_buffer = buffer[0]
-				if first_in_buffer == Vector2(0, -1) or Vector2(1, -1) or Vector2(-1, -1):
-					var event = buffer.pop_front()
-					state_machine.on_child_transition(state_machine.current_state, "Jump")
-					print("Execute event %s!" % event)
-					print_buffer(buffer)
 
-#Attacks
-		#if Input.is_action_pressed("light_attack") and player.is_on_floor():
-			#if not buffer.is_empty():
-				#var first_in_buffer = buffer[0]
-				#if first_in_buffer == Vector2(0, 1):
-					#var event = buffer.pop_front()
-					#state_machine.on_child_transition(state_machine.current_state, "Crouch")
-					#print("s_Light!")
-					#print_buffer(buffer)
 func print_buffer(b: Array):
 	var symbols := []
 
