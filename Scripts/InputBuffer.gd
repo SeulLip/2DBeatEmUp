@@ -34,7 +34,7 @@ func has_jump_input():
 				#var event = buffer.pop_front()
 				#return true 
 func has_crouch_input():
-	return Input.is_action_just_pressed("move_down")
+	return Input.is_action_pressed("move_down")
 
 func get_current_direction() -> Vector2:
 	var x := int(held_directions["move_right"]) - int(held_directions["move_left"])

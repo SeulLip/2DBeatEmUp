@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3 uid="uid://b282vvl1pmlqc"]
+
+[ext_resource type="Script" uid="uid://c5cdmqrqr7ph4" path="res://Scripts/AttackData.gd" id="1_lsopv"]
+
+[resource]
+script = ExtResource("1_lsopv")
+damage = 0.0
+knockup = 200.0
+knockback = 0.0
+link_time = 0.0
+metadata/_custom_type_script = "uid://c5cdmqrqr7ph4"
